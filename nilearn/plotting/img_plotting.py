@@ -648,7 +648,7 @@ def plot_roi(roi_img, bg_img=MNI152TEMPLATE, cut_coords=None,
                                 draw_cross=draw_cross,
                                 black_bg=black_bg, threshold=0.5,
                                 bg_vmin=bg_vmin, bg_vmax=bg_vmax,
-                                resampling_interpolation='nearest',
+                                interpolation='nearest',
                                 alpha=alpha, cmap=cmap,
                                 vmin=vmin, vmax=vmax, **kwargs)
     return display
@@ -866,7 +866,8 @@ def plot_stat_map(stat_map_img, bg_img=MNI152TEMPLATE, cut_coords=None,
                   figure=None, axes=None, title=None, threshold=1e-6,
                   annotate=True, draw_cross=True, black_bg='auto',
                   cmap=cm.cold_hot, symmetric_cbar="auto",
-                  dim=True, vmax=None, **kwargs):
+                  dim=True, vmax=None, interpolation='continuous',
+                  **kwargs):
     """ Plot cuts of an ROI/mask image (by default 3 cuts: Frontal, Axial, and
         Lateral)
 
@@ -934,6 +935,8 @@ def plot_stat_map(stat_map_img, bg_img=MNI152TEMPLATE, cut_coords=None,
             Note: The colormap will always be set to range from -vmax to vmax.
         vmax : float
             Upper bound for plotting, passed to matplotlib.pyplot.imshow
+        resampling_interpolation: 'continuous' | 'nearest'
+            Interpolation of image for plotting
 
         Notes
         -----
@@ -970,7 +973,7 @@ def plot_stat_map(stat_map_img, bg_img=MNI152TEMPLATE, cut_coords=None,
                                 bg_vmin=bg_vmin, bg_vmax=bg_vmax, cmap=cmap,
                                 vmin=vmin, vmax=vmax, colorbar=colorbar,
                                 cbar_vmin=cbar_vmin, cbar_vmax=cbar_vmax,
-                                resampling_interpolation='continuous',
+                                interpolation=interpolation,
                                 **kwargs)
 
     return display
@@ -1094,7 +1097,7 @@ def plot_glass_brain(stat_map_img,
                                 black_bg=black_bg, threshold=threshold,
                                 cmap=cmap, colorbar=colorbar,
                                 display_factory=display_factory,
-                                resampling_interpolation='continuous',
+                                interpolation='continuous',
                                 vmin=vmin, vmax=vmax,
                                 cbar_vmin=cbar_vmin, cbar_vmax=cbar_vmax,
                                 **kwargs)
